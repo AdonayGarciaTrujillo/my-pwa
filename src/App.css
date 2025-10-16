@@ -1,42 +1,158 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* src/App.css */
+
+/* Definimos una paleta de colores para mantener la consistencia */
+:root {
+  --primary-color: #3b82f6; /* Azul principal para botones y acentos */
+  --background-color: #f9fafb; /* Un gris muy claro para el fondo */
+  --text-color: #1f2937; /* Negro suave para el texto principal */
+  --border-color: #e5e7eb; /* Gris claro para bordes */
+  --success-bg: #d1fae5; /* Fondo verde para el estado "En línea" */
+  --success-text: #065f46; /* Texto verde para el estado "En línea" */
+  --error-bg: #fee2e2; /* Fondo rojo para el estado "Sin conexión" */
+  --error-text: #991b1b; /* Texto rojo para el estado "Sin conexión" */
+}
+
+/* Estilos base para toda la página */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+/* Contenedor principal de la aplicación */
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* Estilos para el encabezado */
+.app-header {
   text-align: center;
+  margin-bottom: 2rem;
+  position: relative; /* Necesario para posicionar el indicador de estado */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilos para tu logo */
+.App-logo {
+  height: 120px;
+  margin-bottom: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Indicador de estado de conexión (Online/Offline) */
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* Píldora redondeada */
+  font-size: 0.8rem;
+  font-weight: 600;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid transparent;
 }
 
-.card {
-  padding: 2em;
+.status.online {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-text);
 }
 
-.read-the-docs {
-  color: #888;
+.status.offline {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border-color: var(--error-text);
 }
+
+/* Estilos para el formulario de nuevas tareas */
+.task-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.task-form input {
+  flex-grow: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.task-form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* Resaltado al hacer foco */
+}
+
+.task-form button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.task-form button:hover {
+  background-color: #2563eb; /* Un azul un poco más oscuro al pasar el ratón */
+}
+
+/* Estilos para la lista de tareas */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+/* --- NUEVOS ESTILOS PARA LA SECCIÓN DE NOTIFICACIONES --- */
+
+.notifications-section {
+  text-align: center;
+  margin-top: 3rem; /* Añade un buen espacio de separación */
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color); /* Línea divisoria sutil */
+}
+
+.notification-button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px); /* Efecto sutil al pasar el ratón */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+.notification-button:active {
+  transform: translateY(0); /* Vuelve a la posición original al hacer clic */
+  box-shadow: none;
+}
+/* --- FIN DE LOS NUEVOS ESTILOS --- */
